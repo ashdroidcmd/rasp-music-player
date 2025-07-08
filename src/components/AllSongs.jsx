@@ -36,7 +36,7 @@ const AllSongs = () => {
                 <div>
                   <p className="font-semibold">{song.title}</p>
                 </div>
-                <button className="btn btn-sm bg-ghost rounded-full border border-[#1ED760] text-[#1ED760] hover:bg-[#1ED760] hover:text-black">
+                <button className="btn bg-ghost border border-[#1ED760] text-[#1ED760] hover:bg-[#1ED760] hover:text-black">
                   Play
                 </button>
               </li>
