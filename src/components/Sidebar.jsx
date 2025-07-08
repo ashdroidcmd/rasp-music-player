@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Home, Library } from "lucide-react";
+import { Home, Library, Settings } from "lucide-react";
+
 const Sidebar = () => {
   return (
     <aside className="flex h-screen w-64 flex-col justify-between border-e border-e-gray-400 bg-black p-5">
@@ -7,8 +8,8 @@ const Sidebar = () => {
       <div>
         <h1 className="mb-6 text-xl font-bold text-[#1ED760]">ACE-Potify</h1>
 
-        {/* Navigation */}
         <nav className="flex flex-col gap-4">
+          {/* Navigation */}
           <div className="flex flex-row items-center space-x-2">
             <Home className="text-[#1ED760]" />
             <Link
@@ -26,6 +27,16 @@ const Sidebar = () => {
               className="flex items-center gap-3 font-semibold hover:text-[#1ED760]"
             >
               Playlists
+            </Link>
+          </div>
+
+          <div className="flex flex-row items-center space-x-2">
+            <Settings className="text-[#1ED760]" />
+            <Link
+              to="/settings"
+              className="flex items-center gap-3 font-semibold hover:text-[#1ED760]"
+            >
+              Settings
             </Link>
           </div>
         </nav>

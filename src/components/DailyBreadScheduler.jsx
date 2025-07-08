@@ -1,4 +1,3 @@
-// components/DailyBreadScheduler.jsx
 import { useEffect } from "react";
 import { usePlayerStore } from "../store/usePlayerStore";
 
@@ -18,8 +17,8 @@ const DailyBreadScheduler = () => {
         playDailyBread();
       }
 
-      // 🛑 Stop audio at 5:00 PM
-      if (hours === 17 && minutes === 0) {
+      // 🛑 Stop audio at 4:50 PM
+      if (hours === 16 && minutes === 50) {
         if (audioRef?.current) {
           audioRef.current.pause();
           setPlayState(false);

@@ -3,6 +3,7 @@ import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Home";
 import Playlists from "./pages/Playlists";
 import PlaylistView from "./pages/PlaylistView";
+import Settings from "./pages/Settings";
 import "./App.css";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/playlists" element={<Playlists />} />
           <Route path="playlists/:playlistId" element={<PlaylistView />} />
+          <Route path="/settings" element={<Settings />} />
         </Route>
       </Routes>
     </BrowserRouter>

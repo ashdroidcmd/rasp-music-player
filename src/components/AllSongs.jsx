@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { usePlayerStore } from "../store/usePlayerStore"; // adjust path as needed
+import { usePlayerStore } from "../store/usePlayerStore";
 
 const AllSongs = () => {
   const [songs, setSongs] = useState([]);
@@ -7,6 +7,7 @@ const AllSongs = () => {
   const setPlayState = usePlayerStore((state) => state.setPlayState);
   const setPlaylist = usePlayerStore((state) => state.setPlaylist);
 
+  // Fetch from Audio.json
   useEffect(() => {
     fetch("/data/Audio.json")
       .then((res) => res.json())
@@ -14,7 +15,7 @@ const AllSongs = () => {
         setSongs(data);
         setPlaylist(data);
       });
-  }, []);
+  }, [setPlaylist]);
 
   const handlePlaySong = (song) => {
     setCurrentSong(song);
@@ -26,6 +27,8 @@ const AllSongs = () => {
       <div className="h-dvh bg-neutral-950">
         <div className="p-4">
           <h2 className="mb-4 text-2xl font-bold text-[#1ED760]">All Songs</h2>
+
+          {/* All Songs Lists */}
           <ul className="space-y-2">
             {songs.map((song) => (
               <li

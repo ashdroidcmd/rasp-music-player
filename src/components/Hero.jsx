@@ -14,11 +14,11 @@ const Hero = () => {
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between px-4 md:flex-row">
         {/* Text Content */}
         <div className="flex-1">
-          <h1 className="mb-4 text-4xl font-bold md:text-5xl text-[#1ED760]">
+          <h1 className="mb-4 text-4xl font-bold text-[#1ED760] md:text-5xl">
             ACE-Potify
           </h1>
           <p className="mb-4 text-lg font-semibold text-gray-200">
-            Made by MIS DEPARTMENT
+            Powered by <span className="text-[#1ED760]">MIS DEPARTMENT</span>
           </p>
         </div>
 
