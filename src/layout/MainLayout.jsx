@@ -4,16 +4,18 @@ import PlayingNow from "../components/PlayingNow";
 
 const MainLayout = () => {
   return (
-    <div className="flex h-screen overflow-hidden">
-      {/* Sidebar */}
-      <Sidebar />
+    <div className="h-screen flex flex-col">
+      <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar */}
+        <Sidebar />
 
-      {/* Main Content */}
-      <main className="flex-1 overflow-y-auto">
-        <Outlet />
-      </main>
+        {/* Page Content */}
+        <main className="flex-1 overflow-y-auto">
+          <Outlet />
+        </main>
+      </div>
 
-      {/* Fixed Now Playing Bar at the Bottom */}
+      {/* Persistent Now Playing Bar */}
       <PlayingNow />
     </div>
   );

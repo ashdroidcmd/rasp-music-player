@@ -1,29 +1,40 @@
 import React, { useEffect, useState } from "react";
+import { usePlayerStore } from "../store/usePlayerStore"; // adjust path as needed
 
 const AllSongs = () => {
   const [songs, setSongs] = useState([]);
+  const setCurrentSong = usePlayerStore((state) => state.setCurrentSong);
+  const setPlayState = usePlayerStore((state) => state.setPlayState);
+  const setPlaylist = usePlayerStore((state) => state.setPlaylist);
 
   useEffect(() => {
     fetch("/data/Audio.json")
       .then((res) => res.json())
-      .then((data) => setSongs(data))
-      .catch((err) => console.error("Failed to load songs:", err));
+      .then((data) => {
+        setSongs(data);
+        setPlaylist(data);
+      });
   }, []);
+
+  const handlePlaySong = (song) => {
+    setCurrentSong(song);
+    setPlayState(true);
+  };
 
   return (
     <div className="p-4">
-      <h2 className="mb-2 text-2xl font-bold">All Songs</h2>
+      <h2 className="mb-4 text-2xl font-bold">All Songs</h2>
       <ul className="space-y-2">
         {songs.map((song) => (
           <li
             key={song.id}
-            className="bg-base-200 flex items-center justify-between rounded-lg p-4"
+            onClick={() => handlePlaySong(song)}
+            className="bg-base-100 hover:bg-base-300 flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 transition"
           >
             <div>
               <p className="font-semibold">{song.title}</p>
-              <p className="text-sm text-gray-500">{song.artist}</p>
             </div>
-            <audio controls src={song.src} className="w-60" />
+            <button className="btn btn-sm btn-outline btn-success">Play</button>
           </li>
         ))}
       </ul>

@@ -1,10 +1,10 @@
 import { Home, Library } from "lucide-react";
 const Sidebar = () => {
   return (
-    <aside className="flex h-screen w-64 flex-col justify-between border-e border-e-gray-400 bg-black p-4">
+    <aside className="flex h-screen w-64 flex-col justify-between border-e border-e-gray-400 bg-black p-5">
       {/* Logo / App Name */}
       <div>
-        <h1 className="mb-6 text-xl font-bold">Music Player</h1>
+        <h1 className="mb-6 text-xl font-bold">ACE-Potify</h1>
 
         {/* Navigation */}
         <nav className="flex flex-col gap-4">
