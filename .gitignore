@@ -1,3 +1,5 @@
+/public/audio/
+/public/data/
 # Logs
 logs
 *.log

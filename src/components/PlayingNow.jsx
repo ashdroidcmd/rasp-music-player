@@ -57,20 +57,17 @@ const PlayingNow = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-black border-t border-t-gray-400 p-6 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+    <div className="fixed right-0 bottom-0 left-0 z-50 border-t border-t-gray-400 bg-black p-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
         {/* Left: Track Info */}
-        <div className="flex items-center gap-4 w-1/3">
+        <div className="flex w-1/3 items-center gap-4">
           <Music4 className="text-success" />
-          <div>
-            <p className="font-semibold text-white">Song Title</p>
-            <p className="text-sm text-gray-500">Artist Name</p>
-          </div>
+          <p className="font-semibold text-white">Song Title</p>
         </div>
 
         {/* Center: Controls */}
-        <div className="flex flex-col items-center w-1/3">
-          <div className="flex items-center gap-6 mb-4">
+        <div className="flex w-1/3 flex-col items-center">
+          <div className="mb-4 flex items-center gap-6">
             <button
               onClick={() => setIsShuffle((prev) => !prev)}
               className={isShuffle ? "text-success" : "text-gray-400"}
@@ -109,13 +106,13 @@ const PlayingNow = () => {
             max="100"
             value={progress}
             onChange={handleProgress}
-            className="range range-xs w-full text-success"
+            className="range range-xs text-success w-full"
           />
         </div>
 
         {/* Right: Volume + Timer */}
-        <div className="flex flex-col w-1/3 items-center justify-center">
-          <div className="flex items-center gap-2 mb-4">
+        <div className="flex w-1/3 flex-col items-center justify-center">
+          <div className="mb-4 flex items-center gap-2">
             <Volume2 size={18} />
             <input
               type="range"
@@ -124,7 +121,7 @@ const PlayingNow = () => {
               step="0.01"
               defaultValue="1"
               onChange={(e) => (audioRef.current.volume = e.target.value)}
-              className="range range-xs w-40 text-success"
+              className="range range-xs text-success w-40"
             />
           </div>
 

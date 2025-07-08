@@ -1,10 +1,12 @@
-import React from "react";
+import Hero from "../components/Hero";
+import AllSongs from "../components/AllSongs";
 
 const Home = () => {
   return (
-    <div className="">
-      <p className="text-2xl text-center">HOME</p>
-    </div>
+    <>
+      <Hero />
+      <AllSongs />
+    </>
   );
 };
 
