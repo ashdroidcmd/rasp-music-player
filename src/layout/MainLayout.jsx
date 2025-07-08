@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import PlayingNow from "../components/PlayingNow";
 import Hero from "../components/Hero";
+import DailyBreadScheduler from "../components/DailyBreadScheduler";
 
 const MainLayout = () => {
   return (
@@ -17,7 +18,7 @@ const MainLayout = () => {
         </main>
       </div>
 
-      {/* Persistent Now Playing Bar */}
+      <DailyBreadScheduler />
       <PlayingNow />
     </div>
   );
