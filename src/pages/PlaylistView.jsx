@@ -44,7 +44,7 @@ const PlaylistView = () => {
               <button
                 onClick={() => handlePlayPlaylist(songs)}
                 disabled={songs.length === 0}
-                className="btn bg-ghost me-4 border border-[#1ED760] text-[#1ED760] hover:bg-[#1ED760] hover:text-black"
+                className="btn bg-transparent me-4 border border-[#1ED760] text-[#1ED760] hover:bg-[#1ED760] hover:text-black"
               >
                 Play Entire Playlist
               </button>
@@ -65,7 +65,7 @@ const PlaylistView = () => {
                   <p className="font-semibold">{song.title}</p>
                   <p className="text-sm text-white">{song.artist}</p>
                 </div>
-                <button className="btn bg-ghost border border-[#1ED760] text-[#1ED760] hover:bg-[#1ED760] hover:text-black">
+                <button className="btn bg-transparent border border-[#1ED760] text-[#1ED760] hover:bg-[#1ED760] hover:text-black">
                   Play
                 </button>
               </li>

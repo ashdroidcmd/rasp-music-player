@@ -21,6 +21,7 @@ const PlayingNow = () => {
     togglePlay,
     toggleShuffle,
     toggleRepeat,
+    setAudioRef,
     setPlayState,
     playNext,
     playPrevious,
@@ -30,6 +31,10 @@ const PlayingNow = () => {
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+
+  useEffect(() => {
+    setAudioRef(localAudioRef);
+  }, [setAudioRef]);
 
   const handleProgress = (e) => {
     const value = e.target.value;
@@ -100,11 +105,11 @@ const PlayingNow = () => {
               onClick={toggleShuffle}
               className={isShuffle ? "text-[#1ED760]" : "text-gray-400"}
             >
-              <Shuffle />
+              <Shuffle size={22} />
             </button>
 
             <button onClick={playPrevious}>
-              <SkipBack />
+              <SkipBack className="h-10 w-10 rounded-full p-2 text-white transition-colors hover:bg-[#1ED760] hover:text-black" />
             </button>
 
             <button
@@ -115,14 +120,14 @@ const PlayingNow = () => {
             </button>
 
             <button onClick={playNext}>
-              <SkipForward />
+              <SkipForward className="h-10 w-10 rounded-full p-2 text-white transition-colors hover:bg-[#1ED760] hover:text-black" />
             </button>
 
             <button
               onClick={toggleRepeat}
-              className={isRepeat ? "text-[#1ED760]" : "text-gray-400"}
+              className={isRepeat ? "text-[#1ED760]" : "text-white"}
             >
-              <Repeat size={18} />
+              <Repeat size={22} />
             </button>
           </div>
           <input
