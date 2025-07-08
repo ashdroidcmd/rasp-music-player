@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Home";
-import Library from "./pages/Library";
+import Playlists from "./pages/Playlists";
+import PlaylistView from "./pages/PlaylistView";
 import "./App.css";
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route path="/library" element={<Library />} />
+          <Route path="/playlists" element={<Playlists />} />
+          <Route path="playlists/:playlistId" element={<PlaylistView />} />
         </Route>
       </Routes>
     </BrowserRouter>

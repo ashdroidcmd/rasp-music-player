@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Home, Library } from "lucide-react";
 const Sidebar = () => {
   return (
@@ -10,22 +11,22 @@ const Sidebar = () => {
         <nav className="flex flex-col gap-4">
           <div className="flex flex-row items-center space-x-2">
             <Home className="text-success" />
-            <a
-              href="/"
+            <Link
+              to="/"
               className="hover:text-success flex items-center gap-3 font-semibold"
             >
               Home
-            </a>
+            </Link>
           </div>
 
           <div className="flex flex-row items-center space-x-2">
             <Library className="text-success" />
-            <a
-              href="/library"
+            <Link
+              to="/playlists"
               className="hover:text-success flex items-center gap-3 font-semibold"
             >
-              Library
-            </a>
+              Playlists
+            </Link>
           </div>
         </nav>
       </div>
