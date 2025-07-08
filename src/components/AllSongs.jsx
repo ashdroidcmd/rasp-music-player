@@ -22,23 +22,29 @@ const AllSongs = () => {
   };
 
   return (
-    <div className="p-4">
-      <h2 className="mb-4 text-2xl font-bold">All Songs</h2>
-      <ul className="space-y-2">
-        {songs.map((song) => (
-          <li
-            key={song.id}
-            onClick={() => handlePlaySong(song)}
-            className="bg-base-100 hover:bg-base-300 flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 transition"
-          >
-            <div>
-              <p className="font-semibold">{song.title}</p>
-            </div>
-            <button className="btn btn-sm btn-outline btn-success">Play</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <div className="h-dvh bg-neutral-950">
+        <div className="p-4">
+          <h2 className="mb-4 text-2xl font-bold">All Songs</h2>
+          <ul className="space-y-2">
+            {songs.map((song) => (
+              <li
+                key={song.id}
+                onClick={() => handlePlaySong(song)}
+                className="bg-base-100 hover:bg-base-300 flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 transition"
+              >
+                <div>
+                  <p className="font-semibold">{song.title}</p>
+                </div>
+                <button className="btn btn-sm btn-outline btn-success">
+                  Play
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
   );
 };
 

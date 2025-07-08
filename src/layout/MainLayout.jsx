@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import PlayingNow from "../components/PlayingNow";
+import Hero from "../components/Hero";
 
 const MainLayout = () => {
   return (
@@ -11,6 +12,7 @@ const MainLayout = () => {
 
         {/* Page Content */}
         <main className="flex-1 overflow-y-auto">
+          <Hero />
           <Outlet />
         </main>
       </div>
