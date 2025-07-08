@@ -11,7 +11,9 @@ const Playlists = () => {
     <>
       <div className="h-dvh bg-neutral-950">
         <div className="p-4">
-          <h1 className="mb-6 text-center text-3xl font-bold">Library</h1>
+          <h1 className="mb-6 text-center text-3xl font-bold text-[#1ED760]">
+            Playlists
+          </h1>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {playlists.map(({ name, file }) => (

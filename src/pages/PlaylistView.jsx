@@ -37,14 +37,14 @@ const PlaylistView = () => {
       <div className="h-dvh bg-neutral-950">
         <div className="p-6">
           <div className="mb-4 flex flex-row items-center">
-            <h1 className="grow text-2xl font-bold capitalize">
+            <h1 className="grow text-2xl font-bold text-[#1ED760] capitalize">
               {playlistId} Playlist
             </h1>
             <div>
               <button
                 onClick={() => handlePlayPlaylist(songs)}
                 disabled={songs.length === 0}
-                className="btn btn-success btn-outline mr-4"
+                className="btn bg-ghost me-4 border border-[#1ED760] text-[#1ED760] hover:bg-[#1ED760] hover:text-black"
               >
                 Play Entire Playlist
               </button>
@@ -65,7 +65,7 @@ const PlaylistView = () => {
                   <p className="font-semibold">{song.title}</p>
                   <p className="text-sm text-white">{song.artist}</p>
                 </div>
-                <button className="btn btn-sm btn-outline btn-success">
+                <button className="btn bg-ghost border border-[#1ED760] text-[#1ED760] hover:bg-[#1ED760] hover:text-black">
                   Play
                 </button>
               </li>

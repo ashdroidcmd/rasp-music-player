@@ -82,7 +82,7 @@ const PlayingNow = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
         {/* Track Info */}
         <div className="flex w-1/3 items-center gap-4">
-          <Music4 className="text-success" />
+          <Music4 className="text-[#1ED760]" />
           {currentSong ? (
             <div>
               <p className="font-semibold text-white">{currentSong.title}</p>
@@ -98,7 +98,7 @@ const PlayingNow = () => {
           <div className="mb-4 flex items-center gap-6">
             <button
               onClick={toggleShuffle}
-              className={isShuffle ? "text-success" : "text-gray-400"}
+              className={isShuffle ? "text-[#1ED760]" : "text-gray-400"}
             >
               <Shuffle />
             </button>
@@ -109,7 +109,7 @@ const PlayingNow = () => {
 
             <button
               onClick={togglePlay}
-              className="btn btn-sm btn-circle btn-success text-black"
+              className="btn rounded-full bg-[#1ED760] text-black"
             >
               {isPlaying ? <Pause size={16} /> : <Play size={16} />}
             </button>
@@ -120,7 +120,7 @@ const PlayingNow = () => {
 
             <button
               onClick={toggleRepeat}
-              className={isRepeat ? "text-success" : "text-gray-400"}
+              className={isRepeat ? "text-[#1ED760]" : "text-gray-400"}
             >
               <Repeat size={18} />
             </button>
@@ -131,7 +131,7 @@ const PlayingNow = () => {
             max="100"
             value={progress}
             onChange={handleProgress}
-            className="range range-xs text-success w-full"
+            className="range range-xs w-full text-[#1ED760]"
           />
           <div className="mt-1 text-xs text-gray-400">
             {formatTime(currentTime)} / {formatTime(duration)}
@@ -149,7 +149,7 @@ const PlayingNow = () => {
               step="0.01"
               defaultValue="1"
               onChange={(e) => (localAudioRef.current.volume = e.target.value)}
-              className="range range-xs text-success w-40"
+              className="range range-xs w-40 text-[#1ED760]"
             />
           </div>
           <SleepTimer audioRef={localAudioRef} onTimerEnd={handleTimerEnd} />

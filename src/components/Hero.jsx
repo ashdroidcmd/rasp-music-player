@@ -13,8 +13,8 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between px-4 md:flex-row">
         {/* Text Content */}
-        <div className="flex-1 text-white">
-          <h1 className="text-success mb-4 text-4xl font-bold md:text-5xl">
+        <div className="flex-1">
+          <h1 className="mb-4 text-4xl font-bold md:text-5xl text-[#1ED760]">
             ACE-Potify
           </h1>
           <p className="mb-4 text-lg font-semibold text-gray-200">

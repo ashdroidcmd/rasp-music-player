@@ -25,7 +25,7 @@ const AllSongs = () => {
     <>
       <div className="h-dvh bg-neutral-950">
         <div className="p-4">
-          <h2 className="mb-4 text-2xl font-bold">All Songs</h2>
+          <h2 className="mb-4 text-2xl font-bold text-[#1ED760]">All Songs</h2>
           <ul className="space-y-2">
             {songs.map((song) => (
               <li
@@ -36,7 +36,7 @@ const AllSongs = () => {
                 <div>
                   <p className="font-semibold">{song.title}</p>
                 </div>
-                <button className="btn btn-sm btn-outline btn-success">
+                <button className="btn btn-sm bg-ghost rounded-full border border-[#1ED760] text-[#1ED760] hover:bg-[#1ED760] hover:text-black">
                   Play
                 </button>
               </li>

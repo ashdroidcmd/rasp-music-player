@@ -22,7 +22,7 @@ const DailyBreadScheduler = () => {
     const checkAndPlay = () => {
       const now = new Date();
       const timeString = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
-      const times = "15:02";
+      const times = "15:00";
 
       if (times.includes(timeString) && timeString !== lastPlayedTime) {
         playDailyBread();
