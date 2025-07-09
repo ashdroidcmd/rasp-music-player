@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import { useSchedulerSettings } from "../store/useSchedulerSettings";
 
 const Settings = () => {
-  const [musicStartTime, setMusicStartTime] = useState("20:10"); // 8:10 PM
-  const [dailyBreadTime, setDailyBreadTime] = useState("15:00"); // 3:00 PM
-  const [musicPauseTime, setMusicPauseTime] = useState("16:50"); // 4:50 PM
+  const {
+    musicStartTime,
+    dailyBreadTime,
+    musicPauseTime,
+    setMusicStartTime,
+    setDailyBreadTime,
+    setMusicPauseTime,
+  } = useSchedulerSettings();
 
   const handleSave = () => {
-    console.log("🎵 Music Start:", musicStartTime);
-    console.log("📖 Daily Bread:", dailyBreadTime);
-    console.log("⏸️ Music Pause:", musicPauseTime);
-    // TODO: Save to Zustand or localStorage here
     alert("Settings saved!");
   };
 

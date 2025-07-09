@@ -1,37 +1,50 @@
 import { useEffect } from "react";
 import { usePlayerStore } from "../store/usePlayerStore";
+import { useSchedulerSettings } from "../store/useSchedulerSettings";
 
 const DailyBreadScheduler = () => {
   const playDailyBread = usePlayerStore((state) => state.playDailyBread);
+  const playNext = usePlayerStore((state) => state.playNext);
   const audioRef = usePlayerStore((state) => state.audioRef);
   const setPlayState = usePlayerStore((state) => state.setPlayState);
+
+  const {
+    musicStartTime,
+    dailyBreadTime,
+    musicPauseTime,
+  } = useSchedulerSettings();
 
   useEffect(() => {
     const checkSchedule = () => {
       const now = new Date();
-      const hours = now.getHours();
-      const minutes = now.getMinutes();
+      const current = `${String(now.getHours()).padStart(2, "0")}:${String(
+        now.getMinutes()
+      ).padStart(2, "0")}`;
 
-      // 🕒 Play ODB at 3:00 PM
-      if (hours === 15 && minutes === 0) {
+      if (current === musicStartTime) {
+        console.log("🎵 Playing music at", musicStartTime);
+        playNext(); // Start playing
+      }
+
+      if (current === dailyBreadTime) {
+        console.log("📖 Playing Daily Bread at", dailyBreadTime);
         playDailyBread();
       }
 
-      // 🛑 Stop audio at 4:50 PM
-      if (hours === 16 && minutes === 50) {
+      if (current === musicPauseTime) {
         if (audioRef?.current) {
           audioRef.current.pause();
           setPlayState(false);
-          console.log("⏹️ Stopped audio at 5:00 PM");
+          console.log("⏹️ Paused music at", musicPauseTime);
         }
       }
     };
 
     const interval = setInterval(checkSchedule, 60 * 1000); // check every minute
     return () => clearInterval(interval);
-  }, [playDailyBread, audioRef, setPlayState]);
+  }, [musicStartTime, dailyBreadTime, musicPauseTime, playDailyBread, playNext, audioRef]);
 
-  return null; // no UI needed
+  return null;
 };
 
 export default DailyBreadScheduler;
