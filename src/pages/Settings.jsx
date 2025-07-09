@@ -16,8 +16,8 @@ const Settings = () => {
 
   return (
     <div className="bg-neutral-950 text-white">
-      <div className="mx-auto max-w-xl p-6">
-        <h2 className="mb-8 text-center text-4xl font-bold text-[#1ED760]">
+      <div className="mx-auto max-w-xl p-5">
+        <h2 className="mb-6 text-center text-3xl font-bold text-[#1ED760]">
           Settings
         </h2>
 

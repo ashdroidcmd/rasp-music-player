@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Home, Library, Settings } from "lucide-react";
+import { Home, Library, Settings, BadgeAlert } from "lucide-react";
 
 const Sidebar = () => {
   return (
@@ -37,6 +37,15 @@ const Sidebar = () => {
               className="flex items-center gap-3 font-semibold hover:text-[#1ED760]"
             >
               Settings
+            </Link>
+          </div>
+          <div className="flex flex-row items-center space-x-2">
+            <BadgeAlert className="text-[#1ED760]" />
+            <Link
+              to="/guide"
+              className="flex items-center gap-3 font-semibold hover:text-[#1ED760]"
+            >
+              How To Use
             </Link>
           </div>
         </nav>
