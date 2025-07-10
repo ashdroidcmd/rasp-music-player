@@ -31,7 +31,7 @@ const Settings = () => {
                 type="time"
                 value={musicStartTime}
                 onChange={(e) => setMusicStartTime(e.target.value)}
-                className="input input-bordered w-full text-black"
+                className="input input-bordered w-full bg-black text-white"
               />
             </div>
 
@@ -43,7 +43,7 @@ const Settings = () => {
                 type="time"
                 value={dailyBreadTime}
                 onChange={(e) => setDailyBreadTime(e.target.value)}
-                className="input input-bordered w-full text-black"
+                className="input input-bordered w-full bg-black text-white"
               />
             </div>
 
@@ -55,7 +55,7 @@ const Settings = () => {
                 type="time"
                 value={musicPauseTime}
                 onChange={(e) => setMusicPauseTime(e.target.value)}
-                className="input input-bordered w-full text-black"
+                className="input input-bordered w-full bg-black text-white"
               />
             </div>
           </div>
