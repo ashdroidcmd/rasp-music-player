@@ -22,7 +22,7 @@ const Settings = () => {
         </h2>
 
         <div className="space-y-6">
-          <div className="bg-base-200 space-y-4 rounded-lg p-6 shadow">
+          <div className="space-y-4 rounded-lg bg-stone-900 p-6 shadow">
             <div>
               <label className="mb-1 block text-sm font-medium text-[#1ED760]">
                 Play Music Time

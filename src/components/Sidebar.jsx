@@ -14,7 +14,7 @@ const Sidebar = () => {
             <Home className="text-[#1ED760]" />
             <Link
               to="/"
-              className="flex items-center gap-3 font-semibold hover:text-[#1ED760]"
+              className="flex items-center gap-3 font-semibold text-white hover:text-[#1ED760]"
             >
               Home
             </Link>
@@ -24,7 +24,7 @@ const Sidebar = () => {
             <Library className="text-[#1ED760]" />
             <Link
               to="/playlists"
-              className="flex items-center gap-3 font-semibold hover:text-[#1ED760]"
+              className="flex items-center gap-3 font-semibold text-white hover:text-[#1ED760]"
             >
               Playlists
             </Link>
@@ -34,7 +34,7 @@ const Sidebar = () => {
             <Settings className="text-[#1ED760]" />
             <Link
               to="/settings"
-              className="flex items-center gap-3 font-semibold hover:text-[#1ED760]"
+              className="flex items-center gap-3 font-semibold text-white hover:text-[#1ED760]"
             >
               Settings
             </Link>
@@ -43,7 +43,7 @@ const Sidebar = () => {
             <BadgeAlert className="text-[#1ED760]" />
             <Link
               to="/guide"
-              className="flex items-center gap-3 font-semibold hover:text-[#1ED760]"
+              className="flex items-center gap-3 font-semibold text-white hover:text-[#1ED760]"
             >
               How To Use
             </Link>

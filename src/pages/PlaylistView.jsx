@@ -44,7 +44,7 @@ const PlaylistView = () => {
               <button
                 onClick={() => handlePlayPlaylist(songs)}
                 disabled={songs.length === 0}
-                className="btn bg-transparent me-4 border border-[#1ED760] text-[#1ED760] hover:bg-[#1ED760] hover:text-black"
+                className="btn me-4 border border-[#1ED760] bg-transparent text-[#1ED760] hover:bg-[#1ED760] hover:text-black"
               >
                 Play Entire Playlist
               </button>
@@ -59,13 +59,13 @@ const PlaylistView = () => {
               <li
                 key={song.id}
                 onClick={() => handlePlaySong(song)}
-                className="bg-base-100 hover:bg-base-300 flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 transition"
+                className="flex cursor-pointer items-center justify-between rounded-lg bg-stone-900 px-4 py-2 transition hover:bg-green-950"
               >
                 <div>
-                  <p className="font-semibold">{song.title}</p>
+                  <p className="font-semibold text-white">{song.title}</p>
                   <p className="text-sm text-white">{song.artist}</p>
                 </div>
-                <button className="btn bg-transparent border border-[#1ED760] text-[#1ED760] hover:bg-[#1ED760] hover:text-black">
+                <button className="btn border border-[#1ED760] bg-transparent text-[#1ED760] hover:bg-[#1ED760] hover:text-black">
                   Play
                 </button>
               </li>

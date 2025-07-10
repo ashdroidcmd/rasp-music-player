@@ -19,9 +19,11 @@ const Playlists = () => {
               <Link
                 to={`/playlists/${file.replace(".json", "")}`}
                 key={name}
-                className="bg-base-200 hover:bg-base-300 cursor-pointer rounded-xl p-6 shadow transition hover:shadow-lg"
+                className="cursor-pointer rounded-xl bg-stone-900 p-6 shadow transition hover:bg-green-950 hover:shadow-lg"
               >
-                <h2 className="mb-2 text-xl font-semibold">{name} Playlist</h2>
+                <h2 className="mb-2 text-xl font-semibold text-white">
+                  {name} Playlist
+                </h2>
                 <p className="text-sm text-gray-400">Tap to view songs</p>
               </Link>
             ))}
