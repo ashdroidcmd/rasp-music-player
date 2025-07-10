@@ -34,12 +34,12 @@ const AllSongs = () => {
               <li
                 key={song.id}
                 onClick={() => handlePlaySong(song)}
-                className="bg-stone-900 hover:bg-green-950 flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 transition"
+                className="flex cursor-pointer items-center justify-between rounded-lg bg-stone-900 px-4 py-2 transition hover:bg-green-950"
               >
                 <div>
-                  <p className="font-semibold">{song.title}</p>
+                  <p className="font-semibold text-white">{song.title}</p>
                 </div>
-                <button className="btn bg-stone-900 border border-[#1ED760] text-[#1ED760] hover:bg-[#1ED760] hover:text-black">
+                <button className="btn border border-[#1ED760] bg-stone-900 text-[#1ED760] hover:bg-[#1ED760] hover:text-black">
                   Play
                 </button>
               </li>
