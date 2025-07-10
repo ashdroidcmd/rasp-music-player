@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 
 const playlists = [
-  { name: "Morning", file: "morning.json" },
-  { name: "Afternoon", file: "afternoon.json" },
-  { name: "Evening", file: "christian.json" },
+  { name: "Jazz Music", file: "jazz.json" },
+  { name: "Christian Songs", file: "christian.json" },
 ];
 
 const Playlists = () => {
