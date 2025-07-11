@@ -24,7 +24,7 @@ const AllSongs = () => {
 
   return (
     <>
-      <div className="h-dvh bg-neutral-950">
+      <div className="bg-neutral-950">
         <div className="p-4">
           <h2 className="mb-4 text-2xl font-bold text-[#1ED760]">All Songs</h2>
 
