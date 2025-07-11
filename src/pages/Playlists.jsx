@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 
 const playlists = [
-  { name: "Jazz Music", file: "jazz.json" },
+  { name: "Hallway Jazz Music", file: "jazz.json" },
   { name: "Christian Songs", file: "christian.json" },
+  { name: "Christmas Songs", file: "christmas.json" },
 ];
 
 const Playlists = () => {
@@ -22,7 +23,7 @@ const Playlists = () => {
                 className="cursor-pointer rounded-xl bg-stone-900 p-6 shadow transition hover:bg-green-950 hover:shadow-lg"
               >
                 <h2 className="mb-2 text-xl font-semibold text-white">
-                  {name} Playlist
+                  {name}
                 </h2>
                 <p className="text-sm text-gray-400">Tap to view songs</p>
               </Link>
