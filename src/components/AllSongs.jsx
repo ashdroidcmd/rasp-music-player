@@ -8,24 +8,44 @@ const AllSongs = () => {
   const setPlaylist = usePlayerStore((state) => state.setPlaylist);
 
   useEffect(() => {
-  fetch("http://localhost:3000/api/songs")
-    .then((res) => res.json())
-    .then((data) => {
-      const formattedSongs = data.map((song) => ({
-        id: song.id,
-        title: song.title,
-        src: song.url,
-      }));
-      setSongs(formattedSongs);
-      setPlaylist(formattedSongs);
-    })
-    .catch((err) => console.error("Error fetching songs:", err));
-}, []);
-
+    fetch("http://localhost:3000/api/songs")
+      .then((res) => res.json())
+      .then((data) => {
+        const formattedSongs = data.map((song) => ({
+          id: song.id,
+          title: song.title,
+          src: song.url,
+        }));
+        setSongs(formattedSongs);
+        setPlaylist(formattedSongs);
+      })
+      .catch((err) => console.error("Error fetching songs:", err));
+  }, []);
 
   const handlePlaySong = (song) => {
     setCurrentSong(song);
     setPlayState(true);
+  };
+
+  const handleDeleteSong = async (songId) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this song?");
+    if (!confirmDelete) return;
+
+    try {
+      const res = await fetch(`http://localhost:3000/api/songs/${songId}`, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        setSongs((prev) => prev.filter((song) => song.id !== songId));
+        alert("✅ Song deleted.");
+      } else {
+        alert("❌ Failed to delete song.");
+      }
+    } catch (err) {
+      console.error("❌ Error deleting song:", err);
+      alert("❌ Error deleting song.");
+    }
   };
 
   return (
@@ -37,15 +57,28 @@ const AllSongs = () => {
           {songs.map((song) => (
             <li
               key={song.id}
-              onClick={() => handlePlaySong(song)}
-              className="flex cursor-pointer items-center justify-between rounded-lg bg-stone-900 px-4 py-2 transition hover:bg-green-950"
+              className="flex items-center justify-between rounded-lg bg-stone-900 px-4 py-2 transition hover:bg-green-950"
             >
-              <div>
+              <div
+                className="flex-1 cursor-pointer"
+                onClick={() => handlePlaySong(song)}
+              >
                 <p className="font-semibold text-white">{song.title}</p>
               </div>
-              <button className="btn border border-[#1ED760] bg-stone-900 text-[#1ED760] hover:bg-[#1ED760] hover:text-black">
-                Play
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handlePlaySong(song)}
+                  className="btn border border-[#1ED760] bg-stone-900 text-[#1ED760] hover:bg-[#1ED760] hover:text-black"
+                >
+                  Play
+                </button>
+                <button
+                  onClick={() => handleDeleteSong(song.id)}
+                  className="btn btn-outline btn-error"
+                >
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>

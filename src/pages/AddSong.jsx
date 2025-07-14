@@ -32,17 +32,20 @@ const AddSong = () => {
   };
 
   return (
-    <div className="bg-neutral-950 min-h-dvh flex items-center justify-center text-white">
-      <div className="w-full max-w-md p-6 bg-base-200 rounded-xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-[#1ED760] text-center">
+    <div className="bg-neutral-950 py-10 flex items-center justify-center text-white">
+      <div className="w-full max-w-md p-6 bg-stone-900 rounded-xl shadow-lg">
+        <h2 className="text-2xl font-bold mb-3 text-[#1ED760] text-center">
           Add New Song
         </h2>
+        <p className="text-sm italic text-white text-center font-semibold">NOTES:</p>
+        <p className="text-sm italic text-white text-center">Playlist Id in Playlist Page</p>
+        <p className="text-sm italic text-white text-center mb-6">Change also the ending of Dropbox Url from "dl=0" to "raw=1"</p>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="label text-[#1ED760]">Title</label>
             <input
               type="text"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-black text-white"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
@@ -53,7 +56,7 @@ const AddSong = () => {
             <label className="label text-[#1ED760]">URL (Dropbox .mp3)</label>
             <input
               type="url"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-black text-white"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               required
@@ -64,7 +67,7 @@ const AddSong = () => {
             <label className="label text-[#1ED760]">Playlist ID</label>
             <input
               type="number"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-black text-white"
               value={playlistId}
               onChange={(e) => setPlaylistId(e.target.value)}
               required

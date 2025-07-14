@@ -34,8 +34,8 @@ const AddPlaylist = () => {
   };
 
   return (
-    <div className="bg-neutral-950 min-h-dvh flex items-center justify-center text-white">
-      <div className="w-full max-w-md p-6 bg-base-200 rounded-xl shadow-lg">
+    <div className="bg-neutral-950 pt-24 pb-80 flex items-center justify-center text-white">
+      <div className="w-full max-w-md p-6 bg-stone-900 rounded-xl shadow-lg">
         <h2 className="text-2xl font-bold mb-6 text-center text-[#1ED760]">
           Add New Playlist
         </h2>
@@ -44,7 +44,7 @@ const AddPlaylist = () => {
             <label className="label text-[#1ED760]">Playlist Name</label>
             <input
               type="text"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-black text-white"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
