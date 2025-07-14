@@ -31,6 +31,16 @@ const Sidebar = () => {
           </div>
 
           <div className="flex flex-row items-center space-x-2">
+            <Plus className="text-[#1ED760]" />
+            <Link
+              to="/add-playlist"
+              className="flex items-center gap-3 font-semibold text-white hover:text-[#1ED760]"
+            >
+              Add Playlist
+            </Link>
+          </div>
+
+          <div className="flex flex-row items-center space-x-2">
             <Library className="text-[#1ED760]" />
             <Link
               to="/playlists"
