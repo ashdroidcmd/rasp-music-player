@@ -8,17 +8,14 @@ const DailyBreadScheduler = () => {
   const audioRef = usePlayerStore((state) => state.audioRef);
   const setPlayState = usePlayerStore((state) => state.setPlayState);
 
-  const {
-    musicStartTime,
-    dailyBreadTime,
-    musicPauseTime,
-  } = useSchedulerSettings();
+  const { musicStartTime, dailyBreadTime, musicPauseTime } =
+    useSchedulerSettings();
 
   useEffect(() => {
     const checkSchedule = () => {
       const now = new Date();
       const current = `${String(now.getHours()).padStart(2, "0")}:${String(
-        now.getMinutes()
+        now.getMinutes(),
       ).padStart(2, "0")}`;
 
       if (current === musicStartTime) {
@@ -42,7 +39,14 @@ const DailyBreadScheduler = () => {
 
     const interval = setInterval(checkSchedule, 60 * 1000); // check every minute
     return () => clearInterval(interval);
-  }, [musicStartTime, dailyBreadTime, musicPauseTime, playDailyBread, playNext, audioRef]);
+  }, [
+    musicStartTime,
+    dailyBreadTime,
+    musicPauseTime,
+    playDailyBread,
+    playNext,
+    audioRef,
+  ]);
 
   return null;
 };

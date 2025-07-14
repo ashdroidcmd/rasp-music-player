@@ -15,7 +15,7 @@ const PlaylistView = () => {
     const fetchSongs = async () => {
       try {
         const songsRes = await fetch(
-          `http://localhost:3000/api/playlists/${playlistId}/songs`
+          `http://localhost:3000/api/playlists/${playlistId}/songs`,
         );
         const songsData = await songsRes.json();
         setSongs(songsData);
@@ -28,7 +28,7 @@ const PlaylistView = () => {
     const fetchPlaylistName = async () => {
       try {
         const playlistRes = await fetch(
-          `http://localhost:3000/api/playlists/${playlistId}`
+          `http://localhost:3000/api/playlists/${playlistId}`,
         );
         const playlistData = await playlistRes.json();
         setPlaylistName(playlistData.name || "");
@@ -63,26 +63,27 @@ const PlaylistView = () => {
   };
 
   const handleDeleteSong = async (songId) => {
-  const confirmDelete = window.confirm("Are you sure you want to delete this song?");
-  if (!confirmDelete) return;
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this song?",
+    );
+    if (!confirmDelete) return;
 
-  try {
-    const res = await fetch(`http://localhost:3000/api/songs/${songId}`, {
-      method: "DELETE",
-    });
+    try {
+      const res = await fetch(`http://localhost:3000/api/songs/${songId}`, {
+        method: "DELETE",
+      });
 
-    if (res.ok) {
-      setSongs((prev) => prev.filter((song) => song.id !== songId));
-      alert("✅ Song deleted.");
-    } else {
-      alert("❌ Failed to delete song.");
+      if (res.ok) {
+        setSongs((prev) => prev.filter((song) => song.id !== songId));
+        alert("✅ Song deleted.");
+      } else {
+        alert("❌ Failed to delete song.");
+      }
+    } catch (err) {
+      console.error("❌ Delete error:", err);
+      alert("❌ Error deleting song.");
     }
-  } catch (err) {
-    console.error("❌ Delete error:", err);
-    alert("❌ Error deleting song.");
-  }
-};
-
+  };
 
   return (
     <div className="h-dvh bg-neutral-950">
@@ -106,35 +107,39 @@ const PlaylistView = () => {
         </div>
 
         <ul className="space-y-2">
-  {songs.map((song) => (
-    <li
-      key={song.id}
-      className="flex items-center justify-between rounded-lg bg-stone-900 px-4 py-2 transition hover:bg-green-950"
-    >
-      <div className="flex-1 cursor-pointer" onClick={() => handlePlaySong(song)}>
-        <p className="font-semibold text-white">{song.title}</p>
-        <p className="text-sm text-white">{song.artist || "Unknown Artist"}</p>
-      </div>
+          {songs.map((song) => (
+            <li
+              key={song.id}
+              className="flex items-center justify-between rounded-lg bg-stone-900 px-4 py-2 transition hover:bg-green-950"
+            >
+              <div
+                className="flex-1 cursor-pointer"
+                onClick={() => handlePlaySong(song)}
+              >
+                <p className="font-semibold text-white">{song.title}</p>
+                <p className="text-sm text-white">
+                  {song.artist || "Unknown Artist"}
+                </p>
+              </div>
 
-      <div className="flex items-center gap-2">
-        <button
-          onClick={() => handlePlaySong(song)}
-          className="btn border border-[#1ED760] bg-transparent text-[#1ED760] hover:bg-[#1ED760] hover:text-black"
-        >
-          Play
-        </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handlePlaySong(song)}
+                  className="btn border border-[#1ED760] bg-transparent text-[#1ED760] hover:bg-[#1ED760] hover:text-black"
+                >
+                  Play
+                </button>
 
-        <button
-          onClick={() => handleDeleteSong(song.id)}
-          className="btn btn-outline btn-error"
-        >
-          Delete
-        </button>
-      </div>
-    </li>
-  ))}
-</ul>
-
+                <button
+                  onClick={() => handleDeleteSong(song.id)}
+                  className="btn btn-outline btn-error"
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

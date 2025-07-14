@@ -34,9 +34,9 @@ const AddPlaylist = () => {
   };
 
   return (
-    <div className="bg-neutral-950 pt-24 pb-80 flex items-center justify-center text-white">
-      <div className="w-full max-w-md p-6 bg-stone-900 rounded-xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-center text-[#1ED760]">
+    <div className="flex items-center justify-center bg-neutral-950 pt-24 pb-80 text-white">
+      <div className="w-full max-w-md rounded-xl bg-stone-900 p-6 shadow-lg">
+        <h2 className="mb-6 text-center text-2xl font-bold text-[#1ED760]">
           Add New Playlist
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">

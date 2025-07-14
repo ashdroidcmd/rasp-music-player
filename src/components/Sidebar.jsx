@@ -59,7 +59,6 @@ const Sidebar = () => {
               Settings
             </Link>
           </div>
-          
         </nav>
       </div>
     </aside>

@@ -32,14 +32,20 @@ const AddSong = () => {
   };
 
   return (
-    <div className="bg-neutral-950 py-10 flex items-center justify-center text-white">
-      <div className="w-full max-w-md p-6 bg-stone-900 rounded-xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-3 text-[#1ED760] text-center">
+    <div className="flex items-center justify-center bg-neutral-950 py-10 text-white">
+      <div className="w-full max-w-md rounded-xl bg-stone-900 p-6 shadow-lg">
+        <h2 className="mb-3 text-center text-2xl font-bold text-[#1ED760]">
           Add New Song
         </h2>
-        <p className="text-sm italic text-white text-center font-semibold">NOTES:</p>
-        <p className="text-sm italic text-white text-center">Playlist Id in Playlist Page</p>
-        <p className="text-sm italic text-white text-center mb-6">Change also the ending of Dropbox Url from "dl=0" to "raw=1"</p>
+        <p className="text-center text-sm font-semibold text-white italic">
+          NOTES:
+        </p>
+        <p className="text-center text-sm text-white italic">
+          Playlist Id in Playlist Page
+        </p>
+        <p className="mb-6 text-center text-sm text-white italic">
+          Change also the ending of Dropbox Url from "dl=0" to "raw=1"
+        </p>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="label text-[#1ED760]">Title</label>

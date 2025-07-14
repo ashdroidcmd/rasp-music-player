@@ -28,7 +28,9 @@ const AllSongs = () => {
   };
 
   const handleDeleteSong = async (songId) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this song?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this song?",
+    );
     if (!confirmDelete) return;
 
     try {

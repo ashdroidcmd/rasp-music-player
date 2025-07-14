@@ -19,7 +19,9 @@ const Playlists = () => {
   };
 
   const handleDelete = async (id) => {
-    const confirm = window.confirm("Are you sure you want to delete this playlist?");
+    const confirm = window.confirm(
+      "Are you sure you want to delete this playlist?",
+    );
     if (!confirm) return;
 
     try {
@@ -60,7 +62,7 @@ const Playlists = () => {
               </Link>
               <button
                 onClick={() => handleDelete(id)}
-                className="btn mt-4 w-1/2 rounded btn-outline btn-error px-4 py-2 text-sm font-semibold text-white"
+                className="btn btn-outline btn-error mt-4 w-1/2 rounded px-4 py-2 text-sm font-semibold text-white"
               >
                 Delete Playlist
               </button>
