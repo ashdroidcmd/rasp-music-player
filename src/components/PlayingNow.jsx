@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import {
   Play,
   Pause,
@@ -32,22 +32,56 @@ const PlayingNow = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
+  // Persistent volume state
+  const [volume, setVolume] = useState(() => {
+    const savedVolume = localStorage.getItem("player-volume");
+    return savedVolume !== null ? parseFloat(savedVolume) : 1;
+  });
+
+  // Set volume and persist
+  const handleVolumeChange = useCallback((newVolume) => {
+    setVolume(newVolume);
+    localStorage.setItem("player-volume", newVolume);
+    if (localAudioRef.current) {
+      localAudioRef.current.volume = newVolume;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (localAudioRef.current) {
+      localAudioRef.current.volume = volume;
+    }
+  }, [volume]);
+
   useEffect(() => {
     setAudioRef(localAudioRef);
   }, [setAudioRef]);
 
-  const handleProgress = (e) => {
-    const value = e.target.value;
-    const duration = localAudioRef.current.duration || 1;
-    localAudioRef.current.currentTime = (value / 100) * duration;
-    setProgress(value);
-  };
+  useEffect(() => {
+    if (!localAudioRef.current || !currentSong?.src) return;
+
+    if (isPlaying) {
+      localAudioRef.current
+        .play()
+        .then(() => console.log("✅ Playback started"))
+        .catch((err) => console.error("❌ Playback error:", err));
+    } else {
+      localAudioRef.current.pause();
+    }
+  }, [currentSong, isPlaying]);
 
   const handleTimeUpdate = () => {
-    const current = localAudioRef.current.currentTime;
-    const total = localAudioRef.current.duration || 1;
+    const current = localAudioRef.current?.currentTime || 0;
+    const total = localAudioRef.current?.duration || 1;
     setCurrentTime(current);
     setProgress((current / total) * 100);
+  };
+
+  const handleProgress = (e) => {
+    const value = e.target.value;
+    const total = localAudioRef.current?.duration || 1;
+    localAudioRef.current.currentTime = (value / 100) * total;
+    setProgress(value);
   };
 
   const handleLoadedMetadata = () => {
@@ -63,37 +97,19 @@ const PlayingNow = () => {
     }
   };
 
+  const handleTimerEnd = () => {
+    localAudioRef.current?.pause();
+    setPlayState(false);
+  };
+
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
-  const handleTimerEnd = () => {
-    localAudioRef.current?.pause();
-    setPlayState(false);
-  };
-
-  useEffect(() => {
-    if (!localAudioRef.current) {
-      console.log("audioRef not ready yet.");
-      return;
-    }
-
-    if (currentSong && isPlaying) {
-      console.log("Trying to play:", currentSong.title);
-      localAudioRef.current
-        .play()
-        .then(() => console.log("✅ Playback started"))
-        .catch((err) => console.error("❌ Playback error:", err));
-    } else {
-      localAudioRef.current.pause();
-      console.log("⏸️ Paused");
-    }
-  }, [currentSong, isPlaying, localAudioRef.current]);
-
   return (
-    <div className="fixed right-0 bottom-0 left-0 z-50 border-t border-t-gray-400 bg-black p-6">
+    <div className="fixed right-0 bottom-0 left-0 z-50 border-t border-gray-700 bg-black p-6">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
         {/* Track Info */}
         <div className="flex w-1/3 items-center gap-4">
@@ -109,7 +125,7 @@ const PlayingNow = () => {
 
         {/* Controls */}
         <div className="flex w-1/3 flex-col items-center">
-          <div className="mb-4 flex items-center gap-6">
+          <div className="mb-3 flex items-center gap-6">
             <button
               onClick={toggleShuffle}
               className={isShuffle ? "text-[#1ED760]" : "text-gray-400"}
@@ -139,10 +155,12 @@ const PlayingNow = () => {
               <Repeat size={22} />
             </button>
           </div>
+
           <input
             type="range"
             min="0"
             max="100"
+            step="0.1"
             value={progress}
             onChange={handleProgress}
             className="range range-xs w-full text-[#1ED760]"
@@ -153,35 +171,35 @@ const PlayingNow = () => {
         </div>
 
         {/* Volume + Timer */}
-        <div className="flex w-1/3 flex-col items-center justify-center">
-          <div className="mb-4 flex items-center gap-2">
+        <div className="flex w-1/3 flex-col items-center">
+          <div className="mb-3 flex items-center gap-2">
             <Volume2 size={18} />
             <input
               type="range"
               min="0"
               max="1"
               step="0.01"
-              defaultValue="1"
-              onChange={(e) => (localAudioRef.current.volume = e.target.value)}
+              value={volume}
+              onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
               className="range range-xs w-40 text-[#1ED760]"
             />
           </div>
           <SleepTimer audioRef={localAudioRef} onTimerEnd={handleTimerEnd} />
         </div>
-
-        {/* Audio Element */}
-        {currentSong?.src && (
-          <audio
-            key={currentSong?.id}
-            ref={localAudioRef}
-            src={currentSong?.src || currentSong?.url || ""}
-            onTimeUpdate={handleTimeUpdate}
-            onEnded={handleEnded}
-            onLoadedMetadata={handleLoadedMetadata}
-            preload="auto"
-          />
-        )}
       </div>
+
+      {/* Audio Element */}
+      {currentSong?.src && (
+        <audio
+          key={currentSong?.id}
+          ref={localAudioRef}
+          src={currentSong?.src || currentSong?.url || ""}
+          onTimeUpdate={handleTimeUpdate}
+          onEnded={handleEnded}
+          onLoadedMetadata={handleLoadedMetadata}
+          preload="auto"
+        />
+      )}
     </div>
   );
 };

@@ -47,19 +47,19 @@ const SleepTimer = ({ audioRef, onTimerEnd }) => {
       <div className="flex gap-2">
         <button
           onClick={() => startTimer(1)}
-          className="btn btn-xs btn-outline btn-success"
+          className="btn btn-xs border border-[#1ED760] bg-transparent text-[#1ED760]"
         >
           1 min
         </button>
         <button
           onClick={() => startTimer(240)}
-          className="btn btn-xs btn-outline btn-success"
+          className="btn btn-xs border border-[#1ED760] bg-transparent text-[#1ED760]"
         >
           4 hours
         </button>
         <button
           onClick={() => startTimer(540)}
-          className="btn btn-xs btn-outline btn-success"
+          className="btn btn-xs border border-[#1ED760] bg-transparent text-[#1ED760]"
         >
           9 hours
         </button>
