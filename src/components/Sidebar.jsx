@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Home, Library, Settings, BadgeAlert } from "lucide-react";
+import { Home, Library, Settings, Plus } from "lucide-react";
 
 const Sidebar = () => {
   return (
@@ -17,6 +17,16 @@ const Sidebar = () => {
               className="flex items-center gap-3 font-semibold text-white hover:text-[#1ED760]"
             >
               Home
+            </Link>
+          </div>
+
+          <div className="flex flex-row items-center space-x-2">
+            <Plus className="text-[#1ED760]" />
+            <Link
+              to="/add-song"
+              className="flex items-center gap-3 font-semibold text-white hover:text-[#1ED760]"
+            >
+              Add Song
             </Link>
           </div>
 
@@ -39,15 +49,7 @@ const Sidebar = () => {
               Settings
             </Link>
           </div>
-          <div className="flex flex-row items-center space-x-2">
-            <BadgeAlert className="text-[#1ED760]" />
-            <Link
-              to="/guide"
-              className="flex items-center gap-3 font-semibold text-white hover:text-[#1ED760]"
-            >
-              How To Use
-            </Link>
-          </div>
+          
         </nav>
       </div>
     </aside>

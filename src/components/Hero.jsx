@@ -24,7 +24,7 @@ const Hero = () => {
 
         {/* Image or Illustration */}
         <div className="flex flex-1 justify-center">
-          <img src="/logo.png" alt="ACE Logo" className="w-44 md:w-55" loading="lazy" />
+          <img src="/logo.png" alt="ACE Logo" className="w-44 md:w-55" />
         </div>
       </div>
     </section>

@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Playlists from "./pages/Playlists";
 import PlaylistView from "./pages/PlaylistView";
 import Settings from "./pages/Settings";
-import Guide from "./pages/Guide";
+import AddSong from "./pages/AddSong";
 import "./App.css";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
           <Route path="/playlists" element={<Playlists />} />
           <Route path="playlists/:playlistId" element={<PlaylistView />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/guide" element={<Guide />} />
+          <Route path="/add-song" element={<AddSong />} />
         </Route>
       </Routes>
     </BrowserRouter>

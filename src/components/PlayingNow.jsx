@@ -74,13 +74,23 @@ const PlayingNow = () => {
     setPlayState(false);
   };
 
-  useEffect(() => {
-    if (currentSong && isPlaying) {
-      localAudioRef.current?.play().catch(() => {});
-    } else {
-      localAudioRef.current?.pause();
-    }
-  }, [currentSong, isPlaying]);
+ useEffect(() => {
+  if (!localAudioRef.current) {
+    console.log("audioRef not ready yet.");
+    return;
+  }
+
+  if (currentSong && isPlaying) {
+    console.log("Trying to play:", currentSong.title);
+    localAudioRef.current
+      .play()
+      .then(() => console.log("✅ Playback started"))
+      .catch((err) => console.error("❌ Playback error:", err));
+  } else {
+    localAudioRef.current.pause();
+    console.log("⏸️ Paused");
+  }
+}, [currentSong, isPlaying, localAudioRef.current]);
 
   return (
     <div className="fixed right-0 bottom-0 left-0 z-50 border-t border-t-gray-400 bg-black p-6">
@@ -91,7 +101,6 @@ const PlayingNow = () => {
           {currentSong ? (
             <div>
               <p className="font-semibold text-white">{currentSong.title}</p>
-              <p className="text-sm text-gray-400">{currentSong.artist}</p>
             </div>
           ) : (
             <p className="text-sm text-gray-500">No song selected</p>
@@ -121,7 +130,7 @@ const PlayingNow = () => {
 
             <button onClick={playNext}>
               <SkipForward className="h-10 w-10 rounded-full p-2 text-white transition-colors hover:bg-[#1ED760] hover:text-black" />
-            </button>
+            </button> 
 
             <button
               onClick={toggleRepeat}
@@ -163,12 +172,14 @@ const PlayingNow = () => {
         {/* Audio Element */}
         {currentSong?.src && (
           <audio
-            ref={localAudioRef}
-            src={currentSong?.src || ""}
-            onTimeUpdate={handleTimeUpdate}
-            onEnded={handleEnded}
-            onLoadedMetadata={handleLoadedMetadata}
-          />
+  key={currentSong?.id}
+  ref={localAudioRef}
+  src={currentSong?.src || currentSong?.url || ""}
+  onTimeUpdate={handleTimeUpdate}
+  onEnded={handleEnded}
+  onLoadedMetadata={handleLoadedMetadata}
+  preload="auto"
+/>
         )}
       </div>
     </div>
